@@ -21,4 +21,12 @@ public class Cliente {
         return cnpj;
     }
 
+    public String getDados () {
+        String aux = "";
+
+        aux += "CNPJ : "+ cnpj + "\n";
+        aux += "Cliente : "+ cliente + "\n";
+        return aux;
+    }
+
 }
