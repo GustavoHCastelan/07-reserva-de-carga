@@ -37,4 +37,20 @@ public class Viagem {
         }
         return false;
     }
+
+    public int getIndex() {
+        return index;
+    }
+
+    public void setIndex(int index) {
+        this.index = index;
+    }
+
+    public String getDados() {
+        String aux = "";
+        for (int i = 0; i < index; i++) {
+            aux += carga[i].getDados() + "\n";
+        }
+            return aux;
+    }
 }

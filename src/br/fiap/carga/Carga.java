@@ -24,7 +24,7 @@ public class Carga {
         aux += "ID: " + id + "\n";
         aux += "Destino: " + destino + "\n";
         aux += "Peso: " + peso + "kg\n";
-        aux += "Cliente: " + cliente.getDados();
+        aux += cliente.getDados();
         return aux;
     }
 
