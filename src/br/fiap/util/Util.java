@@ -5,11 +5,14 @@ import br.fiap.cliente.Cliente;
 import br.fiap.viagem.Viagem;
 
 import javax.swing.*;
+import java.text.DecimalFormat;
+
 import static java.lang.Integer.parseInt;
 import static javax.swing.JOptionPane.showInputDialog;
 import static javax.swing.JOptionPane.showMessageDialog;
 
 public class Util {
+    static DecimalFormat dc = new DecimalFormat("#,##0.00");
 
     private Viagem viagem = new Viagem();
 
@@ -29,6 +32,7 @@ public class Util {
                 case 1 -> reservar();
                 case 2 -> pesquisar();
                 case 3 -> exibir();
+                case 4 -> capacidadeReservada();
                 case 5 -> cancelar();
                 case 6 -> showMessageDialog(null, "Até breve");
                 default -> showMessageDialog(null, "Opção inválida");
@@ -38,18 +42,28 @@ public class Util {
 
     }
 
+    private void capacidadeReservada() {
+        showMessageDialog(null, dc.format(viagem.capacidadeReservada())+"Kg");
+    }
+
     private void cancelar() {
+        int id = parseInt(showInputDialog("ID para pesquisa"));
+        if (viagem.cancelar(id)) {
+            showMessageDialog(null, "Carga cancelada com sucesso!");
+        }else {
+            showMessageDialog(null, "Erro ao cancelar a carga");
+        }
     }
 
     private void pesquisar() {
-
-    }
-
-    private void pesquisarId() {
         int id = parseInt(showInputDialog("ID para pesquisa"));
-        for (int i = 0; i < viagem.getIndex(); i++) {
-
+        Carga carga = viagem.pesquisar(id);
+        if (carga == null) {
+            showMessageDialog(null, "Carga não encontrada");
+        }else {
+            showMessageDialog(null, carga.getDados());
         }
+
     }
 
     private void exibir() {
