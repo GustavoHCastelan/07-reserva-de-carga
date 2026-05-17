@@ -13,7 +13,7 @@ public class Cliente {
         return cliente;
     }
 
-    public void setCliente () {
+    public void setCliente (String cliente) {
         this.cliente = cliente;
     }
 

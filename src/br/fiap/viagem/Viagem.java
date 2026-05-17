@@ -24,7 +24,7 @@ public class Viagem {
     public boolean cancelar (int id) {
         int i = pesquisarId(id);
         if (i != -1) {
-            carga[i] = carga[index + 1];
+            carga[i] = carga[index - 1];
             index--;
             return true;
         }
